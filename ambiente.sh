@@ -15,6 +15,13 @@ then
     echo "Não foi possível instalar o jdk"
     exit 1
 fi
+
+if ! add-apt-repository ppa:webupd8team/java
+then
+    echo "Não foi possivel adicionar o repositorio ppa:webupd8team/java"
+    exit 1
+fi
+
 echo "Instalação finalizada"
 
 if ! apt-get update && apt-get upgrade
