@@ -24,7 +24,7 @@ fi
 
 echo "Instalação finalizada"
 
-if ! apt-get update && apt-get upgrade
+if ! apt-get update
 then
     echo "Não foi possível atualizar os repositórios. Verifique seu arquivo /etc/apt/sources.list"
     exit 1
@@ -92,7 +92,7 @@ then
     exit 1
 fi
 
-if ! apt-get update && apt-get upgrade
+if ! apt-get update
 then
     echo "Não foi possível atualizar os repositórios. Verifique seu arquivo /etc/apt/sources.list"
     exit 1
@@ -115,7 +115,7 @@ then
 fi
 echo "Instalação finalizada"
 
-if ! apt-get update && apt-get upgrade
+if ! apt-get update
 then
     echo "Não foi possível atualizar os repositórios. Verifique seu arquivo /etc/apt/sources.list"
     exit 1
@@ -123,6 +123,12 @@ fi
 echo "Atualização feita com sucesso"
 
 echo "Atualizando pacotes já instalados"
+
+if ! apt-get install curl
+then
+    echo "Não foi possível encontrar o link"
+    exit 1
+fi
 
 if ! curl -s "https://get.sdkman.io" | bash
 then
